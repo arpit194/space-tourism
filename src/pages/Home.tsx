@@ -5,9 +5,9 @@ const Home = () => {
   return (
     <div
       className="w-screen h-lvh  
-        bg-[url('./images/home/background-home-mobile.jpg')] 
-        sm:bg-[url('./images/home/background-home-tablet.jpg')] 
-        lg:bg-[url('./images/home/background-home-desktop.jpg')] 
+        bg-[url('/images/home/background-home-mobile.jpg')] 
+        sm:bg-[url('/images/home/background-home-tablet.jpg')] 
+        lg:bg-[url('/images/home/background-home-desktop.jpg')] 
         bg-no-repeat bg-cover px-6 pt-40 pb-24 md:px-32 md:pb-36 md:pt-56 lg:px-40 lg:py-32"
     >
       <div className="w-full h-full flex flex-col items-center justify-between lg:flex-row lg:items-end">
