@@ -7,6 +7,7 @@ import {
 import Home from "@/pages/Home";
 import Destinations from "@/pages/Destinations";
 import Crew from "@/pages/Crew";
+import Technology from "@/pages/Technology";
 import ErrorPage from "@/pages/ErrorPage";
 // import ThemeSelector from "@/components/ThemeSelector";
 import PageWrapper from "@/components/PageWrapper";
@@ -44,7 +45,7 @@ const router = createBrowserRouter(
       path="/technology"
       element={
         <PageWrapper>
-          <Home />
+          <Technology />
         </PageWrapper>
       }
       errorElement={<ErrorPage />}

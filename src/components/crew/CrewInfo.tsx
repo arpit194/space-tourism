@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { crew } from "@/lib/data.json";
 import { Typography } from "../Typography";
 import { m, LazyMotion, domAnimation } from "framer-motion";
+import { changeSlideIndex } from "@/lib/utils";
 
 const CrewInfo = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [touchX, setTouchX] = useState(0);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -17,10 +19,33 @@ const CrewInfo = () => {
     return () => clearTimeout(timer);
   }, [selectedIndex]);
 
+  const checkSwipe = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (touchX > e.changedTouches[0].clientX) {
+      changeSlideIndex(
+        "increase",
+        setSelectedIndex,
+        crew.length,
+        selectedIndex
+      );
+    } else {
+      changeSlideIndex(
+        "decrease",
+        setSelectedIndex,
+        crew.length,
+        selectedIndex
+      );
+    }
+    setTouchX(0);
+  };
+
   return (
     <LazyMotion features={domAnimation}>
       <div className="flex flex-col flex-1 justify-between lg:flex-row overflow-hidden">
-        <div className="flex flex-col text-center items-center lg:text-start lg:items-start lg:pb-20 lg:px-20">
+        <div
+          className="flex flex-col text-center items-center lg:text-start lg:items-start lg:pb-20 lg:px-20"
+          onTouchStart={(e) => setTouchX(e.changedTouches[0].clientX)}
+          onTouchEnd={checkSwipe}
+        >
           <Typography variant={"preset4"} className="uppercase pb-2 text-grey">
             {crew[selectedIndex].role}
           </Typography>
@@ -65,9 +90,8 @@ const CrewInfo = () => {
           animate={{ y: 0 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
           key={selectedIndex}
-          src={crew[selectedIndex].images.png}
+          src={crew[selectedIndex].images.webp}
           alt={crew[selectedIndex].name}
-          loading="eager"
           className="size-72 object-contain sm:size-[30rem] xl:size-[40rem] mx-auto lg:mt-auto"
         />
       </div>

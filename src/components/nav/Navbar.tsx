@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav className="absolute top-0 left-0 p-6 sm:pl-16 w-full flex justify-between items-center lg:top-10 lg:z-10">
+    <nav className="absolute top-0 left-0 p-6 sm:pl-16 w-full flex justify-between items-center lg:top-10 z-50">
       <Link to={"/"}>
         <img
           src="images/shared/logo.svg"

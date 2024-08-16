@@ -1,10 +1,12 @@
 import { Typography } from "../Typography";
 import { destinations } from "@/lib/data.json";
+import { changeSlideIndex } from "@/lib/utils";
 import { m, LazyMotion, domAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const Destination = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [touchX, setTouchX] = useState(0);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -18,21 +20,41 @@ const Destination = () => {
     return () => clearTimeout(timer);
   }, [selectedIndex]);
 
+  const checkSwipe = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (touchX > e.changedTouches[0].clientX) {
+      changeSlideIndex(
+        "increase",
+        setSelectedIndex,
+        destinations.length,
+        selectedIndex
+      );
+    } else {
+      changeSlideIndex(
+        "decrease",
+        setSelectedIndex,
+        destinations.length,
+        selectedIndex
+      );
+    }
+    setTouchX(0);
+  };
+
   return (
     <LazyMotion features={domAnimation}>
-      <div className="flex flex-col items-center justify-start gap-4 lg:flex-row lg:px-20 lg:justify-between lg:flex-1 xl:items-start xl:pt-10 overflow-hidden">
+      <div className="flex flex-col items-center justify-start gap-4 lg:flex-row lg:px-20 lg:justify-between lg:gap-16 lg:flex-1 lg:items-start lg:pt-10 overflow-hidden">
         <m.img
           initial={{ rotate: -30, opacity: 0 }}
           animate={{ rotate: 0, opacity: 1 }}
           transition={{ duration: 1 }}
           key={selectedIndex}
-          src={destinations[selectedIndex].images.png}
+          src={destinations[selectedIndex].images.webp}
           alt={destinations[selectedIndex].name}
-          loading="eager"
+          onTouchStart={(e) => setTouchX(e.changedTouches[0].clientX)}
+          onTouchEnd={checkSwipe}
           className="size-36 object-cover sm:size-80 sm:my-10 lg:size-96 xl:size-[30rem] xl:my-0"
         />
         <div className="flex flex-col gap-4 items-center lg:items-start lg:w-1/2">
-          <div className="flex justify-evenly items-center w-full sm:w-1/2 lg:justify-between">
+          <div className="flex justify-evenly items-center w-full sm:w-1/2 lg:w-3/5 xl:w-1/2 lg:justify-between">
             <Typography
               variant={"preset8"}
               className={`uppercase pb-2 border-b-2 border-transparent cursor-pointer hover:border-white/50 ${
