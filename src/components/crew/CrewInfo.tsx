@@ -19,8 +19,8 @@ const CrewInfo = () => {
 
   return (
     <LazyMotion features={domAnimation}>
-      <div className="flex flex-col flex-1 justify-between">
-        <div className="flex flex-col text-center items-center">
+      <div className="flex flex-col flex-1 justify-between lg:flex-row overflow-hidden">
+        <div className="flex flex-col text-center items-center lg:text-start lg:items-start lg:pb-20 lg:px-20">
           <Typography variant={"preset4"} className="uppercase pb-2 text-grey">
             {crew[selectedIndex].role}
           </Typography>
@@ -29,31 +29,31 @@ const CrewInfo = () => {
           </Typography>
           <Typography
             variant={"preset9"}
-            className="text-foreground px-10 h-40"
+            className="text-foreground px-10 h-40 sm:px-36 lg:px-0"
           >
             {crew[selectedIndex].bio}
           </Typography>
-          <div className="flex justify-center items-center gap-4">
+          <div className="flex justify-center items-center gap-4 sm:gap-8 lg:mt-auto">
             <button
-              className={`size-[0.63rem] rounded-full ${
+              className={`size-[0.63rem] sm:size-3 rounded-full ${
                 selectedIndex === 0 ? "bg-white" : "bg-grey"
               }`}
               onClick={() => setSelectedIndex(0)}
             />
             <button
-              className={`size-[0.63rem] rounded-full ${
+              className={`size-[0.63rem] sm:size-3 rounded-full ${
                 selectedIndex === 1 ? "bg-white" : "bg-grey "
               }`}
               onClick={() => setSelectedIndex(1)}
             />
             <button
-              className={`size-[0.63rem] rounded-full ${
+              className={`size-[0.63rem] sm:size-3 rounded-full ${
                 selectedIndex === 2 ? "bg-white" : "bg-grey "
               }`}
               onClick={() => setSelectedIndex(2)}
             />
             <button
-              className={`size-[0.63rem] rounded-full ${
+              className={`size-[0.63rem] sm:size-3 rounded-full ${
                 selectedIndex === 3 ? "bg-white" : "bg-grey "
               }`}
               onClick={() => setSelectedIndex(3)}
@@ -67,7 +67,7 @@ const CrewInfo = () => {
           key={selectedIndex}
           src={crew[selectedIndex].images.png}
           alt={crew[selectedIndex].name}
-          className="size-72 object-contain sm:size-80 sm:my-10 lg:size-96 xl:size-[40rem] mx-auto"
+          className="size-72 object-contain sm:size-[30rem] xl:size-[40rem] mx-auto lg:mt-auto"
         />
       </div>
     </LazyMotion>

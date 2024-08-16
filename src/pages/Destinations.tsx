@@ -9,9 +9,9 @@ const Destinations = () => {
         sm:bg-[url('/images/destination/background-destination-tablet.jpg')] 
         lg:bg-[url('/images/destination/background-destination-desktop.jpg')]
         bg-no-repeat bg-cover
-        flex flex-col items-center gap-4 text-white pt-28 px-6 pb-6 sm:pt-40 sm:gap-6 xl:px-96 xl:pt-56"
+        flex flex-col items-center gap-4 text-white pt-28 px-6 pb-6 sm:pt-40 sm:gap-6 lg:px-28 xl:pt-48"
     >
-      <Typography variant={"preset6"} className="uppercase sm:w-full">
+      <Typography variant={"preset6"} className="uppercase sm:w-full lg:pl-20">
         <span className="font-bold text-grey">01</span>
         &nbsp;&nbsp;pick your destination
       </Typography>

@@ -20,7 +20,7 @@ const Destination = () => {
 
   return (
     <LazyMotion features={domAnimation}>
-      <div className="flex flex-col items-center justify-start gap-4 lg:flex-row lg:px-20 lg:justify-between lg:flex-[1]">
+      <div className="flex flex-col items-center justify-start gap-4 lg:flex-row lg:px-20 lg:justify-between lg:flex-1 xl:items-start xl:pt-10 overflow-hidden">
         <m.img
           initial={{ rotate: -30, opacity: 0 }}
           animate={{ rotate: 0, opacity: 1 }}
@@ -28,7 +28,7 @@ const Destination = () => {
           key={selectedIndex}
           src={destinations[selectedIndex].images.png}
           alt={destinations[selectedIndex].name}
-          className="size-36 object-cover sm:size-80 sm:my-10 lg:size-96 xl:size-[40rem]"
+          className="size-36 object-cover sm:size-80 sm:my-10 lg:size-96 xl:size-[30rem] xl:my-0"
         />
         <div className="flex flex-col gap-4 items-center lg:items-start lg:w-1/2">
           <div className="flex justify-evenly items-center w-full sm:w-1/2 lg:justify-between">
