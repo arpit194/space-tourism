@@ -28,6 +28,7 @@ const Destination = () => {
           key={selectedIndex}
           src={destinations[selectedIndex].images.png}
           alt={destinations[selectedIndex].name}
+          loading="eager"
           className="size-36 object-cover sm:size-80 sm:my-10 lg:size-96 xl:size-[30rem] xl:my-0"
         />
         <div className="flex flex-col gap-4 items-center lg:items-start lg:w-1/2">

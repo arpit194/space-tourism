@@ -67,6 +67,7 @@ const CrewInfo = () => {
           key={selectedIndex}
           src={crew[selectedIndex].images.png}
           alt={crew[selectedIndex].name}
+          loading="eager"
           className="size-72 object-contain sm:size-[30rem] xl:size-[40rem] mx-auto lg:mt-auto"
         />
       </div>
