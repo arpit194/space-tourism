@@ -1,8 +1,9 @@
 import {
-  createBrowserRouter,
+  // createBrowserRouter,
   createRoutesFromElements,
   Route,
   RouterProvider,
+  createHashRouter,
 } from "react-router-dom";
 import Home from "@/pages/Home";
 import Destinations from "@/pages/Destinations";
@@ -11,7 +12,7 @@ import ErrorPage from "@/pages/ErrorPage";
 // import ThemeSelector from "@/components/ThemeSelector";
 import PageWrapper from "@/components/PageWrapper";
 
-const router = createBrowserRouter(
+const router = createHashRouter(
   createRoutesFromElements([
     <Route
       path="/"
